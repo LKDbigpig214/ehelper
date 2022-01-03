@@ -3,7 +3,7 @@ import datetime
 
 import PySimpleGUI as sg
 
-from processor import Processor
+from processor import Processor, __version__
 
 
 output_path = os.path.join(os.getcwd(), 'output')
@@ -26,7 +26,7 @@ layout = [[sg.Text('Filename'),
            sg.Input(default_text=output_path, key='output')],
           [sg.OK()]]
 
-window = sg.Window('EHelper', layout)
+window = sg.Window(f'EHelper(v{__version__})', layout)
 
 while True:
     event, values = window.read()
@@ -40,9 +40,6 @@ while True:
             continue
         p = Processor(values['Browse'], values['Browse0'],
                       values['year'], values['output'])
-        # p = Processor('C:/Users/Lenovo/Downloads/2021树德小学.xls',
-        #               'C:/Users/Lenovo/Downloads/2020决算表.xls',
-        #               values['year'], values['output'])
         try:
             p.plot_z01()
             p.plot_z01_pie()

@@ -1,6 +1,9 @@
+import os
+
 from .parser import Parser
 from .output import Output
 
+__version__ = '0.0.1'
 
 class Processor:
     def __init__(self, file1=None,
@@ -12,6 +15,9 @@ class Processor:
         self.wb1 = Parser(file1)
         self.wb2 = Parser(file2)
         self.year = year
+        save_path = os.path.join(
+            save_path,
+            os.path.basename(file1).split('.')[0])
         self.output = Output(save_path)
 
     def close(self):
