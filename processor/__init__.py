@@ -5,6 +5,7 @@ from .output import Output
 
 __version__ = '0.0.1'
 
+
 class Processor:
     def __init__(self, file1=None,
                  file2=None,
@@ -15,6 +16,8 @@ class Processor:
         self.wb1 = Parser(file1)
         self.wb2 = Parser(file2)
         self.year = year
+        if not os.path.exists(save_path):
+            os.mkdir(save_path)
         save_path = os.path.join(
             save_path,
             os.path.basename(file1).split('.')[0])
