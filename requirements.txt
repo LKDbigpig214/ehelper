@@ -1,0 +1,5 @@
+pysimplegui
+pydantic
+xlrd
+matplotlib
+numpy
